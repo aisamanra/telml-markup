@@ -8,8 +8,10 @@ language with the possibility of writing extensible instructions.
 The `render` function takes a [`telml`](https://github.com/aisamanra/telml)
 document and renders it into the
 [`blaze-html`](http://hackage.haskell.org/package/blaze-html-0.8.0.2)
-[`Html`] type, which can then be rendered into HTML. For example, using
-the following minimal program:
+[`Html`](http://hackage.haskell.org/package/blaze-html-0.8.0.2/docs/Text-Blaze-Html.html#t:Html)
+type, which can then be rendered into HTML. For example, the following
+is a minimal program which interprets input on `stdin` and prints the
+rendered HTML (or an error message) to `stdout`.
 
 ~~~~{.haskell}
 module Main
@@ -56,10 +58,10 @@ Error: no match for tag em/3
 
 ## Extended Usage
 
-The `renderWith` function takes a list of additional tags to understand.
-It will always give precedence to the built-in tags, so one cannot overload
-(for example) the built-in tag `em/1`. However, you can add any additional
-tags that you want.
+The `renderWith` function takes a list of additional tags and their
+denotations (in the form of functions from `telml` fragments to
+`blaze-html` fragments.) This allows you to add new tags to the
+markup for particular purposes.
 
 For example, here we add a tag so that `\hello{...}` will render out to
 the HTML string `<strong>Hello, ...!</strong>`:
