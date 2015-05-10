@@ -3,6 +3,10 @@
 The `telml-markup` package provides a simple, LaTeX-inspired markup
 language with the possibility of writing extensible instructions.
 
+**This is in early phases, and so should not be relied upon for any
+kind of stability at this stage.** In particular, the set of tags
+and how they are understood could change radically during development.
+
 ## Basic Usage
 
 The `render` function takes a [`telml`](https://github.com/aisamanra/telml)
