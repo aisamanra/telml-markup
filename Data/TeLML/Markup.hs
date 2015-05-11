@@ -5,7 +5,6 @@ module Data.TeLML.Markup where
 import Control.Monad (void)
 import Data.TeLML
 import Text.Blaze.Html
-import Text.Blaze.Internal (MarkupM)
 import Text.Blaze.Html5 hiding (map, head, html)
 import Text.Blaze.Html5.Attributes hiding (name)
 
@@ -45,6 +44,10 @@ basicTags =
     )
   , ("strong"
     , \case (f,[rs]) -> fmap (strong . sequence_) (mapM f rs)
+            _        -> Left "wrong arity for strong/1"
+    )
+  , ("code"
+    , \case (f,[rs]) -> fmap (code . sequence_) (mapM f rs)
             _        -> Left "wrong arity for strong/1"
     )
   , ("link"
