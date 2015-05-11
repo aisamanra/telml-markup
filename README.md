@@ -45,13 +45,14 @@ module Main
 import Control.Monad ((>=>))
 import Data.TeLML (parse)
 import Data.TeLML.Markup (render)
+import System.Exit (exitFailure)
 import Text.Blaze.Renderer.String (renderMarkup)
 
 main :: IO ()
 main = do
   str <- getContents
   case (parse >=> render) str of
-    Left err  -> putStrLn err
+    Left err  -> putStrLn err >> exitFailure
     Right doc -> putStrLn (renderMarkup doc)
 ~~~~
 
@@ -98,8 +99,9 @@ module Main where
 import Control.Monad ((>=>))
 import Data.TeLML (parse)
 import Data.TeLML.Markup (Renderer, renderWith)
-import Text.Blaze.Renderer.String (renderMarkup)
+import System.Exit (exitFailure)
 import Text.Blaze.Html5 (strong, toMarkup)
+import Text.Blaze.Renderer.String (renderMarkup)
 
 myTags :: [(String, Renderer)]
 myTags =
@@ -118,7 +120,7 @@ main :: IO ()
 main = do
   str <- getContents
   case (parse >=> renderWith myTags) str of
-    Left err  -> putStrLn err
+    Left err  -> putStrLn err >> exitFailure
     Right doc -> putStrLn (renderMarkup doc)
 ~~~~
 
