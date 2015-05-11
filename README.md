@@ -7,6 +7,28 @@ language with the possibility of writing extensible instructions.
 kind of stability at this stage.** In particular, the set of tags
 and how they are understood could change radically during development.
 
+## Sample Document
+
+~~~~
+\code{telml-markup} uses a mostly HTML-like set of names, so we create
+\em{emphasis} with \code{\\em}, \strong{bolding} with \em{\\strong},
+and \code{fixed-width text} with \code{\\code}.
+
+One major difference is the \code{\\link} tag, which takes the form
+\code{\\link\{url\|text\}},
+\link{https://github.com/aisamanra/telml-markup|like this}.
+~~~~
+
+This produces the following rendered HTML:
+
+> <p><code>telml-markup</code> uses an HTML-like set of names, so we create
+> <em>emphasis</em> with <code>\em</code>, <strong>bolding</strong> with <code>\strong</code>,
+> and <code>fixed-width text</code> with <code>\code</code>.
+> </p><p>One major difference is the <code>\link</code> tag, which takes the form
+> <code>\link{url|text}</code>,
+> <a href="https://github.com/aisamanra/telml-markup">like this</a>.
+> </p>
+
 ## Basic Usage
 
 The `render` function takes a [`telml`](https://github.com/aisamanra/telml)
